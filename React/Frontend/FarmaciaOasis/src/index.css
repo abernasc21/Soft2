@@ -1,0 +1,328 @@
+/* ========================================================= */
+/* ===================== SECCIÓN: TABLAS =================== */
+/* ========================================================= */
+/* 
+ * Tablas compactas con diseño elegante y gradiente
+ * Optimizadas para máxima legibilidad y espacio
+ */
+
+.mantine-Table-table {
+  border-collapse: collapse ;
+  border-radius: 12px ;
+  overflow: hidden ;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.05),
+    0 2px 8px rgba(24, 113, 193, 0.03) ;
+  border: 1px solid rgba(24, 113, 193, 0.06) ;
+  width: 100% ;
+  background: white ;
+}
+
+/* Contenedor de scroll para tablas */
+.mantine-ScrollArea-root {
+  border-radius: 12px ;
+  height: 100% ;
+}
+
+.mantine-ScrollArea-viewport {
+  border-radius: 12px ;
+  max-height: 100% ;
+}
+
+/* HEADER CON GRADIENTE AZUL-CIAN */
+.mantine-Table-thead {
+  background: linear-gradient(135deg, #1871c1 0%, #00BCD4 100%) ;
+  position: sticky ;
+  top: 0 ;
+  z-index: 10 ;
+  box-shadow: 0 1px 6px rgba(24, 113, 193, 0.12) ;
+}
+
+/* Celdas de header compactas */
+.mantine-Table-th {
+  background: transparent ;
+  color: white ;
+  font-weight: 600 ;
+  border: none ;
+  font-size: 0.7rem ;
+  text-transform: uppercase ;
+  letter-spacing: 0.3px ;
+  height: 42px ;
+  position: relative ;
+  transition: all 0.2s ease ;
+}
+
+/* Efecto hover sutil en headers */
+.mantine-Table-th:hover {
+  background: rgba(255, 255, 255, 0.12) ;
+}
+
+/* Separadores verticales entre columnas del header */
+.mantine-Table-th:not(:last-child)::after {
+  content: '' ;
+  position: absolute ;
+  right: 0 ;
+  top: 50% ;
+  transform: translateY(-50%) ;
+  height: 16px ;
+  width: 1px ;
+  background: rgba(255, 255, 255, 0.25) ;
+}
+
+/* CELDAS DE CUERPO ULTRA COMPACTAS */
+.mantine-Table-td {
+  background: white ;
+  border: none ;
+  border-bottom: 1px solid rgba(24, 113, 193, 0.04) ;
+  font-size: 0.8rem ;
+  color: #2D3748 ;
+  font-weight: 500 ;
+  transition: all 0.2s ease ;
+  height: 46px ;
+}
+
+/* Efecto hover sutil para filas completas */
+.mantine-Table-tr:hover .mantine-Table-td {
+  background: rgba(0, 0, 0, 0.08) ;
+  color: #2D3748 ;
+  transform: none ;
+  font-weight: 500 ;
+  box-shadow: none ;
+}
+
+.mantine-Table-tr:hover {
+  background: rgba(0, 0, 0, 0.02) ;
+}
+
+/* SCROLLBAR PERSONALIZADO */
+.mantine-ScrollArea-scrollbar {
+  background: rgba(255, 255, 255, 0.1) ;
+  border-radius: 6px ;
+}
+
+.mantine-ScrollArea-thumb {
+  background: white ;
+  border-radius: 6px ;
+}
+
+.mantine-ScrollArea-thumb:hover {
+  background: #f0f0f0 ;
+}
+
+/* Eliminar borde inferior de la última fila */
+.mantine-Table-tbody tr:last-child td {
+  border-bottom: none ;
+}
+
+
+/* ========================================================= */
+/* ===================== SECCIÓN: BOTONES ================== */
+/* ========================================================= */
+/* 
+ * Botones con efecto shine y animaciones fluidas
+ * Diseño consistente en toda la aplicación
+ */
+
+.mantine-Button-root {
+  background: linear-gradient(135deg, #1871c1 0%, #00BCD4 100%) ;
+  color: white ;
+  border: none ;
+  font-weight: 700 ;
+  border-radius: 12px ;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) ;
+  box-shadow: 
+    0 4px 16px rgba(24, 113, 193, 0.25),
+    0 8px 32px rgba(0, 188, 212, 0.15) ;
+  position: relative ;
+  overflow: visible ;
+  display: inline-flex ;
+  align-items: center ;
+  justify-content: center ;
+  padding: 16px 24px ;
+  min-height: 50px ;
+  width: auto ;
+}
+
+/* Efecto shine que se desplaza al hacer hover */
+.mantine-Button-root::before {
+  content: '' ;
+  position: absolute ;
+  top: 0 ;
+  left: -100% ;
+  width: 100% ;
+  height: 100% ;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent) ;
+  transition: left 0.6s ease ;
+}
+
+/* Estados de hover para botones */
+.mantine-Button-root:hover {
+  transform: translateY(-3px) scale(1.02) ;
+  box-shadow: 
+    0 12px 40px rgba(24, 113, 193, 0.35),
+    0 16px 48px rgba(0, 188, 212, 0.2) ;
+  background: linear-gradient(135deg, #00BCD4 0%, #1871c1 100%) ;
+  color: white ;
+}
+
+.mantine-Button-root:hover::before {
+  left: 100% ;
+}
+
+/* ESTRUCTURA INTERNA DE BOTONES - CENTRADO PERFECTO */
+.mantine-Button-root .mantine-Button-inner {
+  display: flex ;
+  align-items: center ;
+  justify-content: center ;
+  gap: 8px ;
+  width: 100% ;
+  margin: 0 auto ;
+  padding: 0 ;
+}
+
+.mantine-Button-root .mantine-Button-label {
+  color: white ;
+  font-weight: 700 ;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) ;
+  font-size: 14px ;
+  white-space: nowrap ;
+  overflow: visible ;
+  text-align: center ;
+  margin: 0 auto ;
+  padding: 0 ;
+  flex: none ;
+  width: auto ;
+}
+
+.mantine-Button-root .mantine-Button-section {
+  color: white ;
+  filter: brightness(1.3) ;
+  display: flex ;
+  align-items: center ;
+  margin: 0 ;
+}
+
+
+/* ========================================================= */
+/* ===================== SECCIÓN: FUENTES ================== */
+/* ========================================================= */
+
+* {
+    font-family: 'Montserrat', sans-serif ;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif ;
+    font-weight: 400;
+}
+
+
+/* ========================================================= */
+/* ===================== SECCIÓN: FORMULARIOS DEL MODAL =============== */
+/* ========================================================= */
+.mantine-form {
+  width: 100%;
+  background: white;
+}
+
+.mantine-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  padding: 2rem;
+}
+
+.mantine-form-simple {
+  padding: 2rem;
+}
+
+.mantine-form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+
+.mantine-form-group:last-child {
+  margin-bottom: 0;
+}
+
+.mantine-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.mantine-form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: black;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.mantine-form-group label::before {
+  content: "•";
+  color: #0288d1;
+  font-weight: bold;
+}
+
+.mantine-form-group input,
+.mantine-form-group select,
+.mantine-form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e1f5fe;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: #f8fdff;
+  color: #000000;
+}
+
+.mantine-form-group input:focus,
+.mantine-form-group select:focus,
+.mantine-form-group textarea:focus {
+  outline: none;
+  border-color: #0288d1;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(2, 136, 209, 0.1);
+  transform: translateY(-1px);
+  animation: glowBlue 0.5s ease;
+}
+
+.mantine-form-group input:hover,
+.mantine-form-group select:hover {
+  border-color: #b3e5fc;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #000000 ; 
+  opacity: 1; 
+}
+
+.mantine-form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #e1f5fe;
+  background: #f0f9ff;
+  border-radius: 0 0 16px 16px;
+}
+
+.glob-modal-content {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.btn-cancelar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(120, 144, 156, 0.3);
+  background: linear-gradient(135deg, #00BCD4 0%, #1871c1 100%);
+  background: linear-gradient(135deg, #1871c1 0%, #00BCD4 100%);
+}
+

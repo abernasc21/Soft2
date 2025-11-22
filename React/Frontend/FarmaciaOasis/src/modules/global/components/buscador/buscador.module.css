@@ -1,0 +1,196 @@
+/* ============================================= */
+/* SEARCH COMPONENT STYLES */
+/* ============================================= */
+
+.container {
+    position: relative;
+    margin: 0 auto;
+}
+
+.form {
+    width: 100%;
+}
+
+.root {
+    width: 100%;
+}
+
+.input {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    padding-right: 8px !important;
+}
+
+.section {
+    transition: all 0.2s ease;
+}
+
+.searchIcon {
+    transition: color 0.2s ease;
+}
+
+.rightSection {
+    padding: 0 8px;
+}
+
+/* Botón para limpiar búsqueda */
+.clearButton {
+    color: var(--mantine-color-gray-5);
+    transition: all 0.2s ease;
+    border-radius: 6px;
+}
+
+.clearButton:hover {
+    color: var(--mantine-color-red-6);
+    background-color: var(--mantine-color-red-0);
+}
+
+/* Atajo de teclado */
+.shortcut {
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.shortcut:hover {
+    opacity: 1;
+}
+
+/* Botón de búsqueda */
+.searchButton {
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.searchButton:hover {
+    transform: translateX(1px);
+}
+
+/* ===== PANEL DE RESULTADOS ===== */
+
+/* Panel desplegable de resultados */
+.resultsPanel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 8px;
+    z-index: 1000;
+    animation: slideDown 0.2s ease;
+}
+
+/* Contenedor de resultados con scroll */
+.resultsContainer {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--mantine-color-gray-2);
+    padding: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Items individuales de resultados */
+.resultItem {
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 2px;
+}
+
+.resultItem:hover {
+    background-color: var(--mantine-color-blue-0);
+    transform: translateX(2px);
+}
+
+.resultItem:last-child {
+    margin-bottom: 0;
+}
+
+.resultText {
+    font-weight: 500;
+}
+
+.resultCategory {
+    font-weight: 400;
+}
+
+/* ===== SCROLLBAR PERSONALIZADO ===== */
+
+.resultsContainer::-webkit-scrollbar {
+    width: 6px;
+}
+
+.resultsContainer::-webkit-scrollbar-track {
+    background: var(--mantine-color-gray-0);
+    border-radius: 3px;
+}
+
+.resultsContainer::-webkit-scrollbar-thumb {
+    background: var(--mantine-color-gray-4);
+    border-radius: 3px;
+}
+
+.resultsContainer::-webkit-scrollbar-thumb:hover {
+    background: var(--mantine-color-gray-5);
+}
+
+/* ===== ANIMACIONES ===== */
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 100% !important;
+    }
+    
+    .input {
+        font-size: 16px; /* Previene zoom en iOS */
+    }
+    
+    .shortcut {
+        display: none; /* Ocultar atajo en móviles */
+    }
+    
+    .resultsContainer {
+        max-height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .resultsPanel {
+        position: fixed;
+        top: 80px;
+        left: 16px;
+        right: 16px;
+        margin-top: 0;
+    }
+    
+    .resultsContainer {
+        max-height: 60vh;
+    }
+}
+
+/* Estados deshabilitados */
+.input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Efecto activo */
+.input:active:not(:disabled) {
+    transform: scale(0.99);
+    transition: transform 0.1s ease;
+}

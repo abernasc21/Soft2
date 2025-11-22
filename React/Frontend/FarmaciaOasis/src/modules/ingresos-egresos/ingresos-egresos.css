@@ -1,0 +1,392 @@
+/* ============================================= */
+/* INGRESOS Y EGRESOS STYLES */
+/* ============================================= */
+
+
+/* Título con gradiente */
+
+.gradient-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: linear-gradient(135deg, #1871c1 0%, #00BCD4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #1871c1 0%, #00BCD4 100%);
+  border-radius: 10px;
+  padding: 6px;
+  margin-right: 10px;
+}
+
+.title-icon svg {
+  color: white;
+  width: 50px;
+  height: 50px;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.ingresos-egresos-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* HEADER MEJORADO CON ÍCONO */
+.ingresos-egresos-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 15px;
+}
+
+.ingresos-egresos-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #1871c1 0%, #00BCD4 100%);
+  border-radius: 15px;
+  color: white;
+}
+
+.ingresos-egresos-titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1871c1 0%, #00BCD4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Contenedor de controles */
+.ingresos-egresos-controles-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.ingresos-egresos-busqueda-container {
+  align-self: flex-start;
+}
+
+.ingresos-egresos-busqueda-container input:focus,
+.ingresos-egresos-busqueda-container input:hover {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ingresos-egresos-filtros-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Grupo de botones y controles */
+.ingresos-egresos-filtros-container .mantine-Group {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Botones derechos */
+.ingresos-egresos-botones-derecha {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  margin-left: auto;
+}
+
+
+
+/* Contenedor de estadísticas */
+.stats-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+/* Tarjetas de estadísticas */
+.stat-card {
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  margin: 0 auto;
+  text-align: center;
+  min-width: 200px;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Iconos de estadísticas */
+.stat-icon-total,
+.stat-icon-ingreso,
+.stat-icon-egreso,
+.stat-icon-saldo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 auto 0.5rem auto;
+}
+
+.stat-icon-total {
+  background: linear-gradient(135deg, #1871c1 0%, #00BCD4 100%);
+}
+
+.stat-icon-ingreso {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.stat-icon-egreso {
+  background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%);
+}
+
+.stat-icon-saldo {
+  background: linear-gradient(135deg, #6c757d 0%, #adb5bd 100%);
+}
+
+.stat-icon-total svg,
+.stat-icon-ingreso svg,
+.stat-icon-egreso svg,
+.stat-icon-saldo svg {
+  color: white;
+}
+
+/* Números con gradiente */
+.number-total,
+.number-ingreso,
+.number-egreso,
+.number-saldo {
+  font-weight: 800;
+  text-align: center;
+  display: block;
+}
+
+.number-total {
+  background: linear-gradient(135deg, #1871c1 0%, #00BCD4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.number-ingreso {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.number-egreso {
+  background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.number-saldo {
+  background: linear-gradient(135deg, #6c757d 0%, #adb5bd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Contenedor de controles */
+.controls-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+/* Filtro por tipo centrado */
+.filtro-tipo-centrado {
+  min-width: 250px;
+  margin: 0 auto;
+}
+
+/* Contenedor de filtros derecho */
+.filtros-derecho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Botón de Excel */
+.excel-button {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.excel-button:hover {
+  background: linear-gradient(135deg, #218838 0%, #1e9e8a 100%);
+}
+
+/* Modal de fechas para ingresos-egresos */
+.ie-date-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+.ie-date-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.ie-date-field label {
+  font-weight: 600;
+  color: #1e88e5;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.ie-date-picker {
+  padding: 0.75rem;
+  border: 2px solid #e3f2fd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: white;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.ie-date-picker:focus {
+  outline: none;
+  border-color: #1e88e5;
+  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+}
+
+/* Estados de carga y error */
+.cargando {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 18px;
+  color: #666;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 18px;
+  color: #e74c3c;
+  background: #fdf2f2;
+  border-radius: 8px;
+  border: 1px solid #f5c6cb;
+  padding: 20px;
+}
+
+/* Botones personalizados */
+.ingresos-egresos-container .mantine-Button {
+  transition: all 0.2s ease;
+}
+
+.ingresos-egresos-container .mantine-Button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Efectos hover para interactividad */
+.ingresos-egresos-container .mantine-Button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el modal */
+.ingresos-egresos-container .mantine-Modal-header {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.ingresos-egresos-container .mantine-Modal-title {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Estilos para el select */
+.ingresos-egresos-container .mantine-Select-input {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.ingresos-egresos-container .mantine-Select-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Estados vacíos */
+.ingresos-egresos-container:empty::before {
+  content: "No hay datos para mostrar";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .ingresos-egresos-container,
+  .ingresos-egresos-container .mantine-Button {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Focus visible para accesibilidad */
+.ingresos-egresos-container button:focus-visible,
+.ingresos-egresos-container input:focus-visible,
+.ingresos-egresos-container select:focus-visible {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}

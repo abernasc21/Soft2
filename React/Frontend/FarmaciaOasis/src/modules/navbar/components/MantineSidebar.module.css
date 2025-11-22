@@ -1,0 +1,167 @@
+/* ============================================= */
+/* SIDEBAR STYLES */
+/* ============================================= */
+
+/* Contenedor principal de la sidebar */
+.navbar {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #1871c1 0%, #00BCD4 100%) ;
+  border-right: 3px solid var(--mantine-color-blue-6);
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Header con logo y título */
+.header {
+  padding: var(--mantine-spacing-lg);
+  border-bottom: 2px solid var(--mantine-color-blue-7);
+  background: rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-sm);
+}
+
+.logo {
+  height: 35px;
+  width: auto;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  border-radius: 15px;
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* Navegación principal */
+.navbarMain {
+  flex: 1;
+  padding: var(--mantine-spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--mantine-spacing-xs);
+  overflow-y: auto;
+}
+
+/* Enlaces de navegación */
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: var(--mantine-font-size-sm);
+  color: var(--mantine-color-gray-2);
+  padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-md);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--mantine-color-blue-7);
+    color: var(--mantine-color-white);
+    transform: translateX(5px);
+  }
+
+  /* Estado activo de enlace */
+  &[data-active] {
+    background-color: var(--mantine-color-blue-7);
+    color: var(--mantine-color-white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-left: 3px solid var(--mantine-color-yellow-5);
+  }
+}
+
+/* Iconos de los enlaces */
+.linkIcon {
+  color: var(--mantine-color-gray-2);
+  margin-right: var(--mantine-spacing-sm);
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  
+  .link[data-active] & {
+    color: var(--mantine-color-yellow-5);
+  }
+}
+
+/* Footer de la sidebar (sección de usuario) */
+.footer {
+  padding: var(--mantine-spacing-md);
+  border-top: 1px solid var(--mantine-color-blue-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--mantine-spacing-md);
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-sm);
+}
+
+.userAvatar {
+  border: 2px solid var(--mantine-color-blue-5);
+  flex-shrink: 0;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Enlace de cerrar sesión */
+.logoutLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: var(--mantine-font-size-sm);
+  color: var(--mantine-color-gray-3);
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-sm);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--mantine-color-red-9);
+    color: var(--mantine-color-white);
+  }
+}
+
+/* ===== SCROLLBAR PERSONALIZADO ===== */
+
+.navbarMain::-webkit-scrollbar {
+  width: 4px;
+}
+
+.navbarMain::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbarMain::-webkit-scrollbar-thumb {
+  background: var(--mantine-color-blue-6);
+  border-radius: 2px;
+}
+
+.navbarMain::-webkit-scrollbar-thumb:hover {
+  background: var(--mantine-color-blue-5);
+}
