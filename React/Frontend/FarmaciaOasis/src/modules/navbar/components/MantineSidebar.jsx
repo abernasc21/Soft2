@@ -18,12 +18,10 @@ import classes from './MantineSidebar.module.css';
  * Define las rutas, etiquetas e íconos del menú
  */
 const data = [
-  { link: '/', label: 'Dashboard', icon: IconHome },
-  { link: '/inventario', label: 'Inventario', icon: IconPackage },
+  
+  { link: '/', label: 'Inventario', icon: IconPackage },
   { link: '/historial-ventas', label: 'Historial Ventas', icon: IconReceipt2 },
-  { link: '/ingresos-egresos', label: 'Ingresos y Egresos', icon: IconListDetails },
-  { link: '/clientes', label: 'Clientes', icon: IconUsers },
-  { link: '/proveedores', label: 'Proveedores y Mercancia', icon: IconTruck },
+  { link: '/clientes', label: 'Clientes', icon: IconUsers }
 ];
 
 /**
@@ -84,8 +82,8 @@ export function MantineSidebar({ onClose }) {
         {links}
       </div>
 
-      {/* 
-      Sección de usuario deshabilitada temporalmente
+      {
+      //Sección de usuario deshabilitada temporalmente
       <div className={classes.footer}>
         <div className={classes.userInfo}>
           <Avatar 
@@ -112,7 +110,7 @@ export function MantineSidebar({ onClose }) {
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Cerrar Sesión</span>
         </button>
-      </div> */}
+      </div> }
     </nav>
   );
 }

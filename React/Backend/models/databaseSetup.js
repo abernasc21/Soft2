@@ -9,16 +9,6 @@ const createTables = () => {
     direccion TEXT
   )`);
 
-  // PROVEEDOR
-  db.run(`CREATE TABLE IF NOT EXISTS proveedor (
-    id_proveedor INTEGER PRIMARY KEY AUTOINCREMENT,
-    nombre TEXT,
-    telefono TEXT,
-    cantidad INTEGER,
-    concepto TEXT,
-    precio_unitario REAL,
-    precio_total REAL
-  )`);
 
   // CLIENTE
   db.run(`CREATE TABLE IF NOT EXISTS cliente (
@@ -70,145 +60,9 @@ const createTables = () => {
     FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
   )`);
 
-  // Historial Ingresos_Egresos
-  db.run(`CREATE TABLE IF NOT EXISTS Historial_Ingresos_Egresos (
-    id_hie INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_producto INTEGER,
-    nombre TEXT,
-    presentacion TEXT,
-    medida TEXT,
-    lote TEXT,
-    precio_venta REAL,
-    stock_antiguo INTEGER,
-    stock_nuevo INTEGER,
-    fecha DATE DEFAULT (DATE('now','localtime')),
-    hora TIME DEFAULT (TIME('now','localtime')),
-    laboratorio TEXT
-  )`);
 
   // TRIGGERS
   db.serialize(() => {
-
-    // TRIGGER PARA VENTAS - SOLO REGISTRA
-    db.run(`CREATE TRIGGER IF NOT EXISTS registrar_movimiento_venta
-      AFTER INSERT ON detalle_venta
-      FOR EACH ROW
-      BEGIN
-        -- Registrar el movimiento (solo registro, no actualiza stock)
-        INSERT INTO Historial_Ingresos_Egresos (
-          id_producto,
-          nombre,
-          presentacion,
-          medida,
-          lote,
-          precio_venta,
-          stock_antiguo,
-          stock_nuevo,
-          laboratorio,
-          fecha,
-          hora
-        )
-        SELECT
-          p.id_producto,
-          p.nombre_prod,
-          p.presentacion,
-          p.medida,
-          p.lote,
-          p.precio_venta,
-          p.stock + NEW.cantidad,  -- stock antes de la venta
-          p.stock,                 -- stock actual (ya reducido)
-          l.nombre_labo,
-          DATE('now','localtime'),
-          TIME('now','localtime')
-        FROM producto p
-        LEFT JOIN laboratorio l ON p.id_lab = l.id_lab
-        WHERE p.id_producto = NEW.id_producto;
-    
-       
-      END;
-    `);
-    //  Trigger para eliminar duplicado reciente de egreso (venta)
-    db.run(`CREATE TRIGGER IF NOT EXISTS limpiar_duplicado_venta
-      AFTER INSERT ON Historial_Ingresos_Egresos
-      FOR EACH ROW
-      WHEN NEW.stock_nuevo < NEW.stock_antiguo  -- Solo egresos (ventas)
-      BEGIN
-        DELETE FROM Historial_Ingresos_Egresos
-        WHERE id_hie < NEW.id_hie
-          AND id_producto = NEW.id_producto
-          AND stock_antiguo = NEW.stock_antiguo
-          AND stock_nuevo = NEW.stock_nuevo
-          AND ABS(strftime('%s', datetime(fecha || ' ' || hora)) - strftime('%s', datetime('now','localtime'))) <= 2;
-      END;
-    `);
-
-    
-
-    // TRIGGER PARA NUEVO PRODUCTO (INGRESO)
-    db.run(`CREATE TRIGGER IF NOT EXISTS registrar_ingreso_producto_nuevo
-      AFTER INSERT ON producto
-      FOR EACH ROW
-      BEGIN
-        INSERT INTO Historial_Ingresos_Egresos (
-          id_producto,
-          nombre,
-          presentacion,
-          medida,
-          lote,
-          precio_venta,
-          stock_antiguo,
-          stock_nuevo,
-          laboratorio
-        )
-        SELECT
-          NEW.id_producto,
-          NEW.nombre_prod,
-          NEW.presentacion,
-          NEW.medida,
-          NEW.lote,
-          NEW.precio_venta,
-          0,
-          NEW.stock,
-          l.nombre_labo
-        FROM laboratorio l
-        WHERE l.id_lab = NEW.id_lab;
-      END;
-    `);
-
-    //  TRIGGER PARA MODIFICACIONES DE STOCK (INGRESOS Y EGRESOS MANUALES)
-    db.run(`CREATE TRIGGER IF NOT EXISTS registrar_cambio_stock
-      AFTER UPDATE ON producto
-      FOR EACH ROW
-      WHEN NEW.stock != OLD.stock 
-      BEGIN
-        INSERT INTO Historial_Ingresos_Egresos (
-          id_producto,
-          nombre,
-          presentacion,
-          medida,
-          lote,
-          precio_venta,
-          stock_antiguo,
-          stock_nuevo,
-          laboratorio
-        )
-        SELECT
-          NEW.id_producto,
-          NEW.nombre_prod,
-          NEW.presentacion,
-          NEW.medida,
-          NEW.lote,
-          NEW.precio_venta,
-          OLD.stock,
-          NEW.stock,
-          l.nombre_labo
-        FROM laboratorio l
-        WHERE l.id_lab = NEW.id_lab;
-      END;
-    `);
-
-    
-
     //  TRIGGER PARA DESACTIVAR PRODUCTO CUANDO STOCK = 0
     db.run(`CREATE TRIGGER IF NOT EXISTS desactivar_producto_stock_cero
       AFTER UPDATE ON producto

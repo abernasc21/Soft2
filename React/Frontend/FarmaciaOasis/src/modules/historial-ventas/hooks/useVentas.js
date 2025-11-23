@@ -210,7 +210,7 @@ export function useVentas() {
 
   return {
     ventas: ventasFiltradas,
-    ventasOriginales: ventas,
+    
     error,
     loading,
     busqueda,

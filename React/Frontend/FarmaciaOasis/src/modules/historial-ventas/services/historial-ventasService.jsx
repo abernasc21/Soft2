@@ -15,7 +15,6 @@ const HistorialVentasService = {
   obtenerVentasDetalle: async () => {
     try {
       const response = await axios.get(`${API_URL}/ventas`);
-      console.log('Respuesta completa del backend:', response);
       
       // Maneja diferentes estructuras de respuesta del backend
       if (response.data && response.data.data) {
@@ -37,7 +36,6 @@ const HistorialVentasService = {
   obtenerVentas: async () => {
     try {
       const response = await axios.get(`${API_URL}/ventas-detalle`);
-      console.log('Datos de ventas obtenidos:', response.data);
       
       // Maneja diferentes estructuras de respuesta
       if (response.data && response.data.data) {

@@ -5,13 +5,13 @@ const { createTables, verificarProductosAlIniciar } = require("./models/database
 
 // Importar rutas
 const clientesRoutes = require("./routes/clientes");
-const proveedoresRoutes = require("./routes/proveedores");
+
 const laboratoriosRoutes = require("./routes/laboratorios");
 const productosRoutes = require("./routes/productos");
 const ventasRoutes = require("./routes/ventas");
-const dashboardRoutes = require("./routes/dashboard");
 
-const historialRoutes = require("./routes/historial");
+
+
 
 const app = express();
 app.use(cors());
@@ -24,13 +24,12 @@ verificarProductosAlIniciar()
 
 // Configurar rutas
 app.use("/api/clientes", clientesRoutes);
-app.use("/api/proveedores", proveedoresRoutes);
+
 app.use("/api/laboratorios", laboratoriosRoutes);
 app.use("/api/productos", productosRoutes);
 app.use("/api/ventas", ventasRoutes);
-app.use("/api/dashboard", dashboardRoutes);
 
-app.use("/api/historial", historialRoutes); 
+
 
 // Ruta raíz
 app.get("/", (req, res) => {
@@ -38,13 +37,10 @@ app.get("/", (req, res) => {
     message: "API Farmacia Oasis",
     endpoints: {
       clientes: "/api/clientes",
-      proveedores: "/api/proveedores",
+
       laboratorios: "/api/laboratorios",
       productos: "/api/productos",
-      ventas: "/api/ventas",
-      dashboard: "/api/dashboard",
-
-      historial: "/api/historial" 
+      ventas: "/api/ventas"
     }
   });
 });
@@ -64,5 +60,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor backend ejecutándose en http://localhost:${PORT}`);
-  console.log(`📊 Dashboard disponible en http://localhost:${PORT}/api/dashboard`);
+  console.log(`Disponible en http://localhost:${PORT}/api/dashboard`);
 });

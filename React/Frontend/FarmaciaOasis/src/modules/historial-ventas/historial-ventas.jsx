@@ -18,7 +18,6 @@ import './historial-ventas.css';
 function HistorialVentas() {
   const { 
     ventas, 
-    ventasOriginales, 
     loading, 
     error, 
     busqueda,
@@ -155,14 +154,7 @@ function HistorialVentas() {
     { value: 'año', label: 'Año Actual' },
   ];
 
-  // Debug info para desarrollo
-  console.log('Estado actual:', {
-    filtroTipo,
-    busqueda,
-    dateRange,
-    ventasCount: ventas.length,
-    ventasOriginalesCount: ventasOriginales.length
-  });
+
 
   // Estados de carga y error
   if (loading) {
