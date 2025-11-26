@@ -10,6 +10,7 @@ const laboratoriosRoutes = require("./routes/laboratorios");
 const productosRoutes = require("./routes/productos");
 const ventasRoutes = require("./routes/ventas");
 
+const authRoutes = require("./routes/auth");
 
 
 
@@ -28,6 +29,8 @@ app.use("/api/clientes", clientesRoutes);
 app.use("/api/laboratorios", laboratoriosRoutes);
 app.use("/api/productos", productosRoutes);
 app.use("/api/ventas", ventasRoutes);
+
+app.use("/api/auth", authRoutes);
 
 
 

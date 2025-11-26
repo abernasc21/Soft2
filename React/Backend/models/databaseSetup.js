@@ -2,6 +2,21 @@
 const db = require("../config/database");
 
 const createTables = () => {
+  // USUARIOS
+  db.run(`CREATE TABLE IF NOT EXISTS usuario (
+    id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE,
+    password TEXT
+  )`);
+  db.get("SELECT * FROM usuario LIMIT 1", (err, row) => {
+    if (!row) {
+      db.run("INSERT INTO usuario (username, password) VALUES (?, ?)", 
+        ["admin", "1234"]);
+      console.log("👤 Usuario por defecto creado: admin / 1234");
+    }
+  });
+  
+
   // LABORATORIO
   db.run(`CREATE TABLE IF NOT EXISTS laboratorio (
     id_lab INTEGER PRIMARY KEY AUTOINCREMENT,

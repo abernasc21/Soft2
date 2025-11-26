@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+
 import {
   IconHome,
   IconPackage,
@@ -10,7 +11,7 @@ import {
   IconUsers,
   IconTruck
 } from '@tabler/icons-react';
-import { Group, CloseButton, Avatar, Text } from '@mantine/core';
+import { Group, CloseButton, Avatar, Text, Button} from '@mantine/core';
 import classes from './MantineSidebar.module.css';
 
 /**
@@ -24,12 +25,19 @@ const data = [
   { link: '/clientes', label: 'Clientes', icon: IconUsers }
 ];
 
+
+
 /**
  * Componente Sidebar para navegación principal
  * Responsive con funcionalidad de cierre en móviles
  */
 export function MantineSidebar({ onClose }) {
   const navigate = useNavigate();
+  const cerrarSesion = () => {
+    localStorage.removeItem("usuario");
+    navigate(0); // recargar App.jsx → vuelve al login automáticamente
+  };
+  
   const location = useLocation();
   const [active, setActive] = useState(location.pathname);
 
@@ -100,16 +108,21 @@ export function MantineSidebar({ onClose }) {
             <Text size="xs" c="blue.1">Sistema Farmacia</Text>
           </div>
         </div>
-        
-        <button 
-          className={classes.logoutLink}
-          onClick={() => {
-            console.log('Cerrar sesión');
-          }}
-        >
-          <IconLogout className={classes.linkIcon} stroke={1.5} />
-          <span>Cerrar Sesión</span>
-        </button>
+        <Button
+        fullWidth
+        variant="light"
+        color="red"
+        leftSection={<IconLogout size={18} />}
+        onClick={cerrarSesion}
+        style={{
+          marginTop: "20px",
+          fontWeight: "bold",
+          borderRadius: "10px"
+        }}
+      >
+        Cerrar sesión
+      </Button>
+
       </div> }
     </nav>
   );
